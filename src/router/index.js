@@ -17,6 +17,16 @@ const routes = [
     component: User
   },
   {
+    path: '/User/follower/:id',
+    name: 'UserFollower',
+    component: User
+  },
+  {
+    path: '/User/comment/:id',
+    name: 'UserComment',
+    component: User
+  },
+  {
     path: '*',
     name: 'not-found',
     component: NotFound

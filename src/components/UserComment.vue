@@ -5,18 +5,18 @@
         <strong>{{ Comments.length }}</strong> 已評論餐廳
       </div>
       <div class="card-body">
-        <a
-          href="/restaurants/48"
+        <router-link
           v-for="Comment in Comments"
-          :key="Comment.RestaurantId"
+          :key="Comment.id"
+          :to="{ name: 'UserComment', params: { id: Comment.Restaurant.id } }"
         >
           <img
             :src="Comment.Restaurant.image"
             width="60"
             height="60"
-            class="avatar"
+            class="mr-1 mb-1"
           />
-        </a>
+        </router-link>
       </div>
     </div>
     <br />
@@ -25,18 +25,21 @@
         <strong>{{ FavoritedRestaurants.length }}</strong> 收藏的餐廳
       </div>
       <div class="card-body">
-        <a
-          href="/restaurants/48"
+        <router-link
           v-for="FavoritedRestaurant in FavoritedRestaurants"
           :key="FavoritedRestaurant.id"
+          :to="{
+            name: 'UserComment',
+            params: { id: FavoritedRestaurant.Favorite.RestaurantId },
+          }"
         >
           <img
             :src="FavoritedRestaurant.image"
             width="60"
             height="60"
-            class="avatar"
+            class="mr-1 mb-1"
           />
-        </a>
+        </router-link>
       </div>
     </div>
   </div>

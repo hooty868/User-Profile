@@ -5,14 +5,13 @@
         <strong>{{ Followers.length }}</strong> followings (追蹤者)
       </div>
       <div class="card-body">
-        <a href="/users/2" v-for="Follower in Followers" :key="Follower.id">
-          <img
-            :src="Follower.image"
-            width="60"
-            height="60"
-            class="avatar mx-1"
-          />
-        </a>
+        <router-link
+          v-for="Follower in Followers"
+          :key="Follower.id"
+          :to="{ name: 'UserFollower', params: { id: Follower.id } }"
+        >
+          <img :src="Follower.image" width="60" height="60" class="mr-1 mb-1" />
+        </router-link>
       </div>
     </div>
     <br />
@@ -21,14 +20,21 @@
         <strong>{{ Followings.length }}</strong> followers (追隨者)
       </div>
       <div class="card-body">
-        <a href="/users/2" v-for="Following in Followings" :key="Following.id">
+        <router-link
+          :to="{
+            name: 'UserFollower',
+            params: { id: Following.Followship.followingId },
+          }"
+          v-for="Following in Followings"
+          :key="Following.id"
+        >
           <img
             :src="Following.image"
             width="60"
             height="60"
-            class="avatar mx-1"
+            class="mr-1 mb-1"
           />
-        </a>
+        </router-link>
       </div>
     </div>
   </div>
